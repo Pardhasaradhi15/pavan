@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PAVAN</title>
+</head>
+<style>
+body{
+      background-color: rgb(250, 239, 244);
+
+  }
+  p{
+       font-family: courier;
+       font-size:100%;
+        color:rgb(12, 11, 11);
+   }
+  h1 {
+      color: aqua;
+      text-align: center;
+   }
+</style>
+<body>
+  
+<h1 text-align="center;">PAVAN</h1>
+<marquee behavior="scroll" direction="right" scrolling amount="10">FOLLOW</marquee>
+<img src="C:\Users\pardh\Pictures\Camera Roll\IMG_20240604_145005_789.jpg" width="600vh" height="500vh">
+<p>This is Pavan.I am studying inter 1st year in gurazala Jaya bharati collage</p>
+  <p>I got 497 marks in 10th class.show in below</p>
+   <table border="3">
+    <tr>
+      <th>SUBJECTS</th>
+      <th>TOTAL MARKS</th>
+      <th>MARKS</th>
+    </tr>
+    <tr>
+      <td>TELUGU</td>
+      <td>100</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <td>HINDI</td>
+      <td>100</td> 
+      <td>64</td>
+    </tr>     
+    <tr>
+      <td>ENGLISH</td>
+      <td>100</td>
+      <td>86</td>
+    </tr>
+    <tr>
+      <td>MATHS</td>
+      <td>100</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <td>SCIENCE</td>
+      <td>100</td>
+      <td>91</td>
+    </tr>
+    <tr>
+      <td>SOCIAL</td>
+      <td>100</td>
+      <td>75</td>
+    </tr>      
+   </table>
+  <a href="pavan1.html">next page</a>
+</body>
+</html># Simple workflow for deploying static content to GitHub Pages
+name: Deploy static content to Pages
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Single deploy job since we're just deploying
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload entire repository
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
